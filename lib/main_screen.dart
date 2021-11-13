@@ -36,7 +36,6 @@ class ShowDataScreen extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
                         children: [
                           state.loadedData[index].image_url != null
                               ? Image(
