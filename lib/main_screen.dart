@@ -20,14 +20,17 @@ class ShowDataScreen extends StatelessWidget {
           appBar: AppBar(title: const Text('Image listing')),
           body: BlocBuilder<DataBloc, DataState>(
             builder: (context, state) {
+              // When state is initial state
               if (state is StateInitData) {
                 return const Center(
                   child: Text('No data to show'),
                 );
+                // When state is loading state
               } else if (state is StateLoadData) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
+                // When state come with data
               } else if (state is StateLoadSuccess) {
                 return ListView.builder(
                     itemCount: state.loadedData.length,
@@ -53,9 +56,11 @@ class ShowDataScreen extends StatelessWidget {
                         ],
                       );
                     });
+              // When state come with error
               } else if (state is StateLoadError) {
                 return Center(child: Text(state.error.toString()));
               }
+              //Another exception
               return const Center(
                 child: Text('App don\'t work.\nPlease try open it later'),
               );
