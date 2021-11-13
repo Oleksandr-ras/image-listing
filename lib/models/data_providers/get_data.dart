@@ -13,7 +13,6 @@ class DataProvider{
     final response = await http.get(url);
 
     if(response.statusCode == 200) {
-      print(response.body);
       final List<dynamic> dataJson = json.decode(response.body);
       return dataJson.map((e) => DataModel.fromJson(e)).toList();
     } else {
